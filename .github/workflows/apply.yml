@@ -23,17 +23,11 @@ jobs:
         id: get-plan-info
         shell: bash
         run: |
-          issue_body_file=issue_body.txt
-          cat > $issue_body_file << EOL
-          ${{ github.event.issue.body }}
-          EOL 
-          sed -i 's/\r$//' $issue_body_file
-
-          workflow=$(grep -oP '(?<=workflow \().*?(?=\))' "$issue_body_file")
-          run_id=$(grep -oP '(?<=on run \().*?(?=\s\|)' "$issue_body_file")
-          run_number=$(grep -oP '(?<=\| ).*?(?=\s\))' "$issue_body_file")
-          terraform_env=$(grep -oP '(?<=Please approve or deny the deployment on ).*(?= for layer)' "$issue_body_file")
-          terraform_layer=$(grep -oP '(?<=for layer ).*(?=\n)' "$issue_body_file")
+          workflow=$(echo ${{ github.event.issue.body }} | grep -oP '(?<=workflow \().*?(?=\))')
+          run_id=$(echo ${{ github.event.issue.body }} | grep -oP '(?<=on run \().*?(?=\s\|)')
+          run_number=$(echo ${{ github.event.issue.body }} | grep -oP '(?<=\| ).*?(?=\s\))')
+          terraform_env=$(echo ${{ github.event.issue.body }} | grep -oP '(?<=Please approve or deny the deployment on ).*(?= for layer)')
+          terraform_layer=$(echo ${{ github.event.issue.body }} | grep -oP '(?<=for layer ).*(?=\n)')
 
           echo "PLAN_WORKFLOW=$workflow"
           echo "PLAN_WORKFLOW_RUN_ID=$run_id"
