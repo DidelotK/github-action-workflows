@@ -23,6 +23,7 @@ jobs:
         id: get-plan-info
         shell: bash
         run: |
+          echo "Coucou"
           workflow=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=workflow \().*?(?=\))')
           run_id=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=on run \().*?(?=\s\|)')
           run_number=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=\| ).*?(?=\s\))')
