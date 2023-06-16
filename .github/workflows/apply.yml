@@ -28,18 +28,3 @@ jobs:
           workflow=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=workflow \().*?(?=\))')
           echo "PLAN_WORKFLOW=$workflow"
           echo "PLAN_WORKFLOW=$workflow" >> $GITHUB_OUTPUT
-
-          # run_id=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=on run \().*?(?=\s\|)')
-          # run_number=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=\| ).*?(?=\s\))')
-          # terraform_env=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=Please approve or deny the deployment on ).*(?= for layer)')
-          # terraform_layer=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=for layer ).*(?=\n)')
-
-          # echo "PLAN_WORKFLOW_RUN_ID=$run_id"
-          # echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number"
-          # echo "TERRAFORM_ENV=$terraform_env"
-          # echo "TERRAFORM_LAYER=$terraform_layer"
-
-          # echo "PLAN_WORKFLOW_RUN_ID=$run_id" >> $GITHUB_OUTPUT
-          # echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number" >> $GITHUB_OUTPUT
-          # echo "TERRAFORM_ENV=$terraform_env" >> $GITHUB_OUTPUT
-          # echo "TERRAFORM_LAYER=$terraform_layer" >> $GITHUB_OUTPUT
