@@ -23,8 +23,10 @@ jobs:
         id: get-plan-info
         shell: bash
         run: |
-          echo "Coucou"
-
           workflow=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=workflow \().*?(?=\))')
           echo "PLAN_WORKFLOW=$workflow"
           echo "PLAN_WORKFLOW=$workflow" >> $GITHUB_OUTPUT
+
+          run_id=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=on run \().*?(?=\s\|)')
+          echo "PLAN_WORKFLOW_RUN_ID=$run_id"
+          echo "PLAN_WORKFLOW_RUN_ID=$run_id" >> $GITHUB_OUTPUT
