@@ -34,3 +34,7 @@ jobs:
           run_number=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=\| ).*?(?=\))')
           echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number"
           echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number" >> $GITHUB_OUTPUT
+
+          terraform_env=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=Please approve or deny the deployment on ).*(?= for layer)')
+          echo "TERRAFORM_ENV=$terraform_env"
+          echo "TERRAFORM_ENV=$terraform_env" >> $GITHUB_OUTPUT
