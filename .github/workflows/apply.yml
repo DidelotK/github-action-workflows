@@ -30,3 +30,7 @@ jobs:
           run_id=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=on run \().*?(?=\s\|)')
           echo "PLAN_WORKFLOW_RUN_ID=$run_id"
           echo "PLAN_WORKFLOW_RUN_ID=$run_id" >> $GITHUB_OUTPUT
+
+          run_number=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=\| ).*?(?=\s\))')
+          echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number"
+          echo "PLAN_WORKFLOW_RUN_NUMBER=$run_number" >> $GITHUB_OUTPUT
