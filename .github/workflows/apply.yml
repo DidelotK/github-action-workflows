@@ -39,6 +39,6 @@ jobs:
           echo "TERRAFORM_ENV=$terraform_env"
           echo "TERRAFORM_ENV=$terraform_env" >> $GITHUB_OUTPUT
 
-          terraform_layer=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=for layer ).*(?=\n)')
+          terraform_layer=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=for layer ).*')
           echo "TERRAFORM_LAYER=$terraform_layer"
           echo "TERRAFORM_LAYER=$terraform_layer" >> $GITHUB_OUTPUT
