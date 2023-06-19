@@ -1,0 +1,28 @@
+name: 'Trigger other workflow'
+
+on:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  trigger:
+    name: trigger
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: write # This is required for workflow dispatch
+    steps:
+      - name: Checkout repository.
+        uses: actions/checkout@v3
+
+      # - name: Generate Github token.
+      #   id: generate_token
+      #   uses: tibdex/github-app-token@v1
+      #   with:
+      #     app_id: ${{ secrets.APP_ID }}
+      #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Trigger Deploy workflow
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: deploy-layer
