@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository.
         uses: actions/checkout@v3
 
-      - name: Get plan data from issue.
+      - name: Get plan data.
         id: get-plan-info
         shell: bash
         run: |
@@ -45,6 +45,10 @@ jobs:
             terraform_layer=$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=for layer ).*')
             echo "TERRAFORM_LAYER=$terraform_layer"
             echo "TERRAFORM_LAYER=$terraform_layer" >> $GITHUB_OUTPUT
+
+            should_apply=$( [[ ${{ github.event.comment.body }} == *"yes"* ]] && echo "true" || echo "false" )
+            echo "SHOULD_APPLY=$should_apply"
+            echo "SHOULD_APPLY=$should_apply" >> $GITHUB_OUTPUT
           else
             echo "Other trigger type"
           fi
