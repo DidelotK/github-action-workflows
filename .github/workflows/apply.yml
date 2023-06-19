@@ -8,7 +8,7 @@ on:
 
 jobs:
   prepare:
-    if: contains(github.event.issue.labels.*.name, 'release')
+    # if: contains(github.event.issue.labels.*.name, 'release')
     name: prepare
     runs-on: ubuntu-latest
     outputs:
