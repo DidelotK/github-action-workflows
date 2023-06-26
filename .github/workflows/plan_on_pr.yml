@@ -14,5 +14,8 @@ jobs:
         layer: [10_base, 20_eks_core_services]
     environment: ${{ matrix.env }}_${{ matrix.layer }}
     steps:
+      - name: Checkout repository.
+        uses: actions/checkout@v3
+
       - name: Apply
-        run: echo "Applyyy"
+        run: cd ${{ matrix.env }}/${{ matrix.layer }} && sh main.sh

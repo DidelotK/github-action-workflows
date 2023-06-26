@@ -1,0 +1,1 @@
+echo "Sandbox: 20 eks core services"

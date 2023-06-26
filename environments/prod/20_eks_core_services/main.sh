@@ -1,0 +1,1 @@
+echo "Prod: 20 eks core services"
