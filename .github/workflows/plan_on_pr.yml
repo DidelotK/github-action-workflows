@@ -5,6 +5,8 @@ on:
       - synchronize
       - opened
       - reopened
+  workflow_dispatch:
+    inputs: {}
 jobs:
   plan:
     runs-on: ubuntu-latest
